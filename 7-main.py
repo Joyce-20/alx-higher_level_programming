@@ -1,22 +1,26 @@
 #!/usr/bin/python3
-BaseGeometry = __import__('7-base_geometry').BaseGeometry
+save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
 
-bg = BaseGeometry()
+filename = "my_list.json"
+my_list = [1, 2, 3]
+save_to_json_file(my_list, filename)
 
-bg.integer_validator("my_int", 12)
-bg.integer_validator("width", 89)
+filename = "my_dict.json"
+my_dict = {
+    'id': 12,
+    'name': "John",
+    'places': ["San Francisco", "Tokyo"],
+    'is_active': True,
+    'info': {
+        'age': 36,
+        'average': 3.14
+    }
+}
+save_to_json_file(my_dict, filename)
 
 try:
-    bg.integer_validator("name", "John")
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
-
-try:
-    bg.integer_validator("age", 0)
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
-
-try:
-    bg.integer_validator("distance", -4)
+    filename = "my_set.json"
+    my_set = {132, 3}
+    save_to_json_file(my_set, filename)
 except Exception as e:
     print("[{}] {}".format(e.__class__.__name__, e))
